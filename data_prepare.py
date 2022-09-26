@@ -8,8 +8,8 @@ from torch.utils import data
 
 def Data_path():
     label_dict = {'angry1':0,'angry2':0,'angry3':0,'anxiety1':1,'anxiety2':1,'anxiety3':1,'fear1':2,'fear2':2,'fear3':2,'happy1':3,'happy2':3,'happy3':3,'helpless1':4,'helpless2':4,'helpless3':4}
-    eeg_root_dir = './EEG'
-    pys_root_dir = './Pys'
+    eeg_root_dir = './train_EEG'
+    pys_root_dir = './train_Pys'
     EGG_MAT_list =[]
     PYS_MAT_list =[]
     LABEL_list=[]
@@ -47,6 +47,6 @@ class MyDataset(data.Dataset):
         return len(self.eggmat_paths)
 
 
-
-
+EGG_MAT_list, PYS_MAT_list, LABEL_list = Data_path()
+dataset = MyDataset(EGG_MAT_list, PYS_MAT_list, LABEL_list)
 
