@@ -41,7 +41,7 @@ def Process2(data_path1,data_path2):
     # data = scaler.fit_transform(data)  # 归一化
     result1 = []
     result2 = []
-    for channel in range(data1.shape[0]):  # 遍历64通道
+    for channel in range(data1.shape[0]):  # 遍历62通道
         temp = []
         for band_index, band in enumerate(fStart):  # 遍历5种频段
             b, a = signal.butter(1, [fStart[band_index] / fs, fEnd[band_index] / fs], 'bandpass')  # 配置滤波器 4 表示滤波器的阶数
@@ -59,5 +59,5 @@ def Process2(data_path1,data_path2):
             f, t, Z = stft(filtedData, fs=fs, window=window, nperseg=Hm, noverlap=0)
             temp.append(np.mean(np.abs(Z)))
         result2.append(temp)
-    results=np.vstack([result1,result2]) #得到最终的包含多模态频域信息关联的融合特征 72*5
+    results=np.vstack([result1,result2]) #得到最终的包含多模态频域信息关联的融合特征 70*5
     return np.array(results,dtype=np.float32)

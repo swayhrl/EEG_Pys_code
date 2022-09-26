@@ -28,7 +28,7 @@ def Process1(data_path):
     results = []
     temp=[]
     result = []
-    for channel in range(data.shape[0]): #遍历64通道
+    for channel in range(data.shape[0]): #遍历62通道
         for band_index, band in enumerate(fStart): #遍历5频段
             b, a = signal.butter(1, [fStart[band_index] / fs, fEnd[band_index] / fs], 'bandpass')  # 配置滤波器 4 表示滤波器的阶数
             filtedData = signal.filtfilt(b, a, data[channel])  # data为要过滤的信号,filtedData为得到的过滤信号
@@ -45,5 +45,10 @@ def Process1(data_path):
         #print("results_3",len(results))
         result=[]
     results = np.array(results)
+
+    if results.shape[-1]!=7:
+        temp = np.zeros((results.shape[0], results.shape[1], 7))
+        temp[:, :, :results.shape[-1]] = results[:, :, :]
+        results = temp
     results = np.transpose(results,(2,0,1))
     return np.array(results,dtype=np.float32) #输出为7*(64*5)

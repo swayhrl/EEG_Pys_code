@@ -44,7 +44,7 @@ def Process3(data_path1,data_path2):
     # data = scaler.fit_transform(data)  # 归一化
     result1 = []
     result2 = []
-    for channel in range(data1.shape[0]): #遍历64通道
+    for channel in range(data1.shape[0]): #遍历62通道
         for band_index, band in enumerate(fStart): #遍历5种频段
             b, a = signal.butter(1, [fStart[band_index] / fs, fEnd[band_index] / fs], 'bandpass')  # 配置滤波器 4 表示滤波器的阶数
             filtedData = signal.filtfilt(b, a, data1[channel])  # data为要过滤的信号,filtedData为得到的过滤信号
@@ -57,7 +57,7 @@ def Process3(data_path1,data_path2):
         var2 = np.var(data2[:,channel])
         temp = np.hstack([mean2, var2])
         result2.append(temp)
-    results=np.vstack([result1, result2])#得到多模态时序特征 大小为328*2 暂时
+    results=np.vstack([result1, result2])   #得到多模态时序特征 大小为318*2
     
     return np.array(results,dtype=np.float32)
 
