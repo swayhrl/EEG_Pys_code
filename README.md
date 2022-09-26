@@ -17,5 +17,5 @@ python3 main.py
 提取码：1234
 
 ## 验证结果
-在验证集中达到86.11%的成绩!![1e59dbd43317b2bca105a1123893aae](https://user-images.githubusercontent.com/56393103/192287400-7a295329-0554-4c99-98d3-f4eb75fd1a76.png)
+在验证集中达到86.11%的成绩![1e59dbd43317b2bca105a1123893aae](https://user-images.githubusercontent.com/56393103/192287400-7a295329-0554-4c99-98d3-f4eb75fd1a76.png)
 
